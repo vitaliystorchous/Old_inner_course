@@ -66,3 +66,4 @@ target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 .idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml
 .idea/libraries/Maven__com_beust_jcommander_1_72.xml
 .idea/libraries/Maven__aopalliance_aopalliance_1_0.xml
+/.idea/

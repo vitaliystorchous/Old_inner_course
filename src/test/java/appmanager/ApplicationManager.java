@@ -11,6 +11,8 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileReader;
@@ -21,12 +23,14 @@ import java.util.Map;
 import java.util.Properties;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.openqa.selenium.support.ui.ExpectedConditions.stalenessOf;
 
 public class ApplicationManager {
 
     private final Properties properties;
     public HomepageHelper homepageHelper;
     private WebDriver wd;
+    private WebDriverWait wait;
     private String browser;
     private ProductHelper productHelper;
     private CartButtonHelper cartButtonHelper;
@@ -79,6 +83,7 @@ public class ApplicationManager {
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(10, SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
+        wait = new WebDriverWait(wd, 10);
 
         homepageHelper = new HomepageHelper(wd);
         productHelper = new ProductHelper(wd);
@@ -118,6 +123,8 @@ public class ApplicationManager {
     }
 
     public void refresh() {
+        WebElement body = wd.findElement(By.cssSelector("body"));
         wd.navigate().refresh();
+        wait.until(stalenessOf(body));
     }
 }

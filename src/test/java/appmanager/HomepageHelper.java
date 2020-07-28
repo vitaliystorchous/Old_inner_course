@@ -32,6 +32,6 @@ public class HomepageHelper extends HelperBase {
         Actions action = new Actions(wd);
         WebElement product = wd.findElement(By.cssSelector("ul#homefeatured li:nth-child(" + nextInt(1, 9) + ")"));
         action.moveToElement(product).perform();
-        wait.until(elementToBeClickable(product.findElement(By.cssSelector("a[title=View]")))).click();
+        wait.until(elementToBeClickable(product.findElement(By.cssSelector(".quick-view")))).click();
     }
 }
