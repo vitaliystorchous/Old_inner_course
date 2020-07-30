@@ -4,8 +4,8 @@
 
     <test name="test1-chrome" preserve-order="true">
         <classes>
-            <class name="tests.homework_2.TestCase1" />
-            <class name="tests.homework_2.TestCase2" />
+            <!--<class name="selenium.tests.homework_2.TestCase1" />
+            <class name="selenium.tests.homework_2.TestCase2" />-->
         </classes>
     </test>
 </suite>
